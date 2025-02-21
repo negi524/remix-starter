@@ -35,6 +35,13 @@ export default tseslint.config(
   {
     name: "typescript-setting",
     files: ["**/*.{ts,tsx}"],
+    plugins: {
+      typescriptEslint: tseslint,
+      import: _import,
+    },
+    languageOptions: {
+      parser: tsParser,
+    },
   },
   {
     name: "node",
