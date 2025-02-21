@@ -1,4 +1,3 @@
-import globals from "globals";
 // import { fixupPluginRules, fixupConfigRules } from "@eslint/compat";
 import react from "eslint-plugin-react";
 import jsxA11Y from "eslint-plugin-jsx-a11y";
@@ -25,6 +24,22 @@ export default tseslint.config(
   // tseslint.configs.recommendedTypeChecked,
   tseslint.configs.strict,
   tseslint.configs.stylistic,
+  {
+    name: "base-setting",
+    files: ["**/*"],
+  },
+  {
+    name: "react-setting",
+    files: ["**/*.{js,jsx,ts,tsx}"],
+  },
+  {
+    name: "typescript-setting",
+    files: ["**/*.{ts,tsx}"],
+  },
+  {
+    name: "node",
+    files: ["eslint.config.mjs"],
+  },
 );
 
 // export default [{
