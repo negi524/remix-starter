@@ -1,5 +1,5 @@
 import globals from "globals";
-import { fixupConfigRules, fixupPluginRules, fixupConfigRules } from "@eslint/compat";
+// import { fixupPluginRules, fixupConfigRules } from "@eslint/compat";
 import react from "eslint-plugin-react";
 import jsxA11Y from "eslint-plugin-jsx-a11y";
 import typescriptEslint from "@typescript-eslint/eslint-plugin";
@@ -7,108 +7,117 @@ import _import from "eslint-plugin-import";
 import tsParser from "@typescript-eslint/parser";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
-import js from "@eslint/js";
 import { FlatCompat } from "@eslint/eslintrc";
+import eslint from "@eslint/js";
+import tseslint from "typescript-eslint";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
-const compat = new FlatCompat({
-    baseDirectory: __dirname,
-    recommendedConfig: js.configs.recommended,
-    allConfig: js.configs.all
-});
+// const compat = new FlatCompat({
+//     baseDirectory: __dirname,
+//     recommendedConfig: js.configs.recommended,
+//     allConfig: js.configs.all
+// });
 
-export default [{
-    ignores: ["!**/.server", "!**/.client"],
-}, ...compat.extends("eslint:recommended"), {
-    languageOptions: {
-        globals: {
-            ...globals.browser,
-            ...globals.commonjs,
-        },
+export default tseslint.config(
+  eslint.configs.recommended,
+  tseslint.configs.recommended,
+  // tseslint.configs.recommendedTypeChecked,
+  tseslint.configs.strict,
+  tseslint.configs.stylistic,
+);
 
-        ecmaVersion: "latest",
-        sourceType: "module",
+// export default [{
+//     ignores: ["!**/.server", "!**/.client"],
+// }, ...compat.extends("eslint:recommended"), {
+//     languageOptions: {
+//         globals: {
+//             ...globals.browser,
+//             ...globals.commonjs,
+//         },
 
-        parserOptions: {
-            ecmaFeatures: {
-                jsx: true,
-            },
-        },
-    },
-}, ...fixupConfigRules(compat.extends(
-    "plugin:react/recommended",
-    "plugin:react/jsx-runtime",
-    "plugin:react-hooks/recommended",
-    "plugin:jsx-a11y/recommended",
-)).map(config => ({
-    ...config,
-    files: ["**/*.{js,jsx,ts,tsx}"],
-})), {
-    files: ["**/*.{js,jsx,ts,tsx}"],
+//         ecmaVersion: "latest",
+//         sourceType: "module",
 
-    plugins: {
-        react: fixupPluginRules(react),
-        "jsx-a11y": fixupPluginRules(jsxA11Y),
-    },
+//         parserOptions: {
+//             ecmaFeatures: {
+//                 jsx: true,
+//             },
+//         },
+//     },
+// }, ...fixupConfigRules(compat.extends(
+//     "plugin:react/recommended",
+//     "plugin:react/jsx-runtime",
+//     "plugin:react-hooks/recommended",
+//     "plugin:jsx-a11y/recommended",
+// )).map(config => ({
+//     ...config,
+//     files: ["**/*.{js,jsx,ts,tsx}"],
+// })), {
+//     files: ["**/*.{js,jsx,ts,tsx}"],
 
-    settings: {
-        react: {
-            version: "detect",
-        },
+//     plugins: {
+//         react: fixupPluginRules(react),
+//         "jsx-a11y": fixupPluginRules(jsxA11Y),
+//     },
 
-        formComponents: ["Form"],
+//     settings: {
+//         react: {
+//             version: "detect",
+//         },
 
-        linkComponents: [{
-            name: "Link",
-            linkAttribute: "to",
-        }, {
-            name: "NavLink",
-            linkAttribute: "to",
-        }],
+//         formComponents: ["Form"],
 
-        "import/resolver": {
-            typescript: {},
-        },
-    },
-}, ...fixupConfigRules(compat.extends(
-    "plugin:@typescript-eslint/recommended",
-    "plugin:import/recommended",
-    "plugin:import/typescript",
-)).map(config => ({
-    ...config,
-    files: ["**/*.{ts,tsx}"],
-})), {
-    files: ["**/*.{ts,tsx}"],
+//         linkComponents: [{
+//             name: "Link",
+//             linkAttribute: "to",
+//         }, {
+//             name: "NavLink",
+//             linkAttribute: "to",
+//         }],
 
-    plugins: {
-        "@typescript-eslint": fixupPluginRules(typescriptEslint),
-        import: fixupPluginRules(_import),
-    },
+//         "import/resolver": {
+//             typescript: {},
+//         },
+//     },
+// }, ...fixupConfigRules(compat.extends(
+//     "plugin:@typescript-eslint/recommended",
+//     "plugin:import/recommended",
+//     "plugin:import/typescript",
+// )).map(config => ({
+//     ...config,
+//     files: ["**/*.{ts,tsx}"],
+// })), {
+//     files: ["**/*.{ts,tsx}"],
 
-    languageOptions: {
-        parser: tsParser,
-    },
+//     plugins: {
+//         "@typescript-eslint": fixupPluginRules(typescriptEslint),
+//         import: fixupPluginRules(_import),
+//     },
 
-    settings: {
-        "import/internal-regex": "^~/",
+//     languageOptions: {
+//         parser: tsParser,
+//     },
 
-        "import/resolver": {
-            node: {
-                extensions: [".ts", ".tsx"],
-            },
+//     settings: {
+//         "import/internal-regex": "^~/",
 
-            typescript: {
-                alwaysTryTypes: true,
-            },
-        },
-    },
-}, {
-    files: ["**/.eslintrc.cjs"],
+//         "import/resolver": {
+//             node: {
+//                 extensions: [".ts", ".tsx"],
+//             },
 
-    languageOptions: {
-        globals: {
-            ...globals.node,
-        },
-    },
-}];
+//             typescript: {
+//                 alwaysTryTypes: true,
+//             },
+//         },
+//     },
+// }, {
+//     files: ["**/.eslintrc.cjs"],
+
+//     languageOptions: {
+//         globals: {
+//             ...globals.node,
+//         },
+//     },
+// }];
