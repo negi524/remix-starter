@@ -20,7 +20,6 @@ const __dirname = path.dirname(__filename);
 //     recommendedConfig: js.configs.recommended,
 //     allConfig: js.configs.all
 // });
-const compat = new FlatCompat();
 
 export default tseslint.config(
   eslint.configs.recommended,
