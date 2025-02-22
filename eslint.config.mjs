@@ -11,6 +11,7 @@ import eslint from "@eslint/js";
 import tseslint from "typescript-eslint";
 import { createTypeScriptImportResolver } from "eslint-import-resolver-typescript";
 import globals from "globals";
+import reactHooks from "eslint-plugin-react-hooks";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -19,7 +20,7 @@ const __dirname = path.dirname(__filename);
 //     recommendedConfig: js.configs.recommended,
 //     allConfig: js.configs.all
 // });
-// see: https://www.notion.so/typescript-eslint-1a2baa220dd2808b86fbf217c72a230f?pvs=4
+const compat = new FlatCompat();
 
 export default tseslint.config(
   eslint.configs.recommended,
@@ -52,10 +53,24 @@ export default tseslint.config(
     ...react.configs.flat.recommended,
     ...react.configs.flat["jsx-runtime"],
     ...jsxA11Y.flatConfigs.recommended,
+    ...reactHooks.configs["recommended-latest"],
     languageOptions: {
       ...react.configs.flat.recommended.languageOptions,
       ...react.configs.flat["jsx-runtime"].languageOptions,
       ...jsxA11Y.flatConfigs.recommended.languageOptions,
+    },
+    settings: {
+      react: {
+        version: "detect",
+      },
+      formComponents: ["Form"],
+      linkComponents: [
+        { name: "Link", linkAttribute: "to" },
+        { name: "NavLink", linkAttribute: "to" },
+      ],
+      "import/resolver": {
+        typescript: {},
+      },
     },
   },
   {
