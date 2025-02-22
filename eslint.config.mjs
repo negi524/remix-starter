@@ -10,6 +10,7 @@ import { FlatCompat } from "@eslint/eslintrc";
 import eslint from "@eslint/js";
 import tseslint from "typescript-eslint";
 import { createTypeScriptImportResolver } from "eslint-import-resolver-typescript";
+import globals from "globals";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -18,27 +19,49 @@ const __dirname = path.dirname(__filename);
 //     recommendedConfig: js.configs.recommended,
 //     allConfig: js.configs.all
 // });
+// see: https://www.notion.so/typescript-eslint-1a2baa220dd2808b86fbf217c72a230f?pvs=4
 
 export default tseslint.config(
   eslint.configs.recommended,
   tseslint.configs.recommended,
-  // tseslint.configs.recommendedTypeChecked,
   tseslint.configs.strict,
   tseslint.configs.stylistic,
   {
     name: "base-setting",
     files: ["**/*"],
+    ignores: ["!**/.server", "!**/.client"],
+    languageOptions: {
+      ecmaVersion: "latest",
+      sourceType: "module",
+      parserOptions: {
+        ecmaFeatures: {
+          jsx: true,
+        },
+      },
+      globals: {
+        ...globals.browser,
+        ...globals.commonjs,
+        // TODO: あったほうが良いか検証する
+        // ...globals.es2015,
+      },
+    },
   },
   {
     name: "react-setting",
     files: ["**/*.{js,jsx,ts,tsx}"],
+    ...react.configs.flat.recommended,
+    ...react.configs.flat["jsx-runtime"],
+    languageOptions: {
+      ...react.configs.flat.recommended.languageOptions,
+      ...react.configs.flat["jsx-runtime"].languageOptions,
+    },
   },
   {
     name: "typescript-setting",
     files: ["**/*.{ts,tsx}"],
     plugins: {
-      typescriptEslint: tseslint,
-      import: _import,
+      tseslint,
+      _import,
     },
     languageOptions: {
       parser: tsParser,
