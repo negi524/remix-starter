@@ -9,6 +9,7 @@ import { fileURLToPath } from "node:url";
 import { FlatCompat } from "@eslint/eslintrc";
 import eslint from "@eslint/js";
 import tseslint from "typescript-eslint";
+import { createTypeScriptImportResolver } from "eslint-import-resolver-typescript";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -41,6 +42,17 @@ export default tseslint.config(
     },
     languageOptions: {
       parser: tsParser,
+    },
+    settings: {
+      "import/internal-regex": "^~/",
+      "import/resolver": {
+        node: {
+          extensions: [".ts", ".tsx"],
+        },
+        typescript: {
+          alwaysTryTypes: true, // always try to resolve types under `<root>@types` directory even it doesn't contain any source code, like `@types/unist`
+        },
+      },
     },
   },
   {
