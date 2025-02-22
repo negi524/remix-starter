@@ -1,35 +1,22 @@
-// import { fixupPluginRules, fixupConfigRules } from "@eslint/compat";
 import react from "eslint-plugin-react";
 import jsxA11Y from "eslint-plugin-jsx-a11y";
-import typescriptEslint from "@typescript-eslint/eslint-plugin";
-import _import from "eslint-plugin-import";
-import tsParser from "@typescript-eslint/parser";
-import path from "node:path";
-import { fileURLToPath } from "node:url";
-import { FlatCompat } from "@eslint/eslintrc";
+import * as importPlugin from "eslint-plugin-import";
 import eslint from "@eslint/js";
+// eslint-disable-next-line import/no-unresolved
 import tseslint from "typescript-eslint";
-import { createTypeScriptImportResolver } from "eslint-import-resolver-typescript";
 import globals from "globals";
 import reactHooks from "eslint-plugin-react-hooks";
-
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
-// const compat = new FlatCompat({
-//     baseDirectory: __dirname,
-//     recommendedConfig: js.configs.recommended,
-//     allConfig: js.configs.all
-// });
 
 export default tseslint.config(
   eslint.configs.recommended,
   tseslint.configs.recommended,
   tseslint.configs.strict,
   tseslint.configs.stylistic,
+  importPlugin.flatConfigs?.recommended,
   {
     name: "base-setting",
     files: ["**/*"],
-    ignores: ["!**/.server", "!**/.client"],
+    ignores: ["!**/.server", "!**/.client", "eslint.config.mjs"],
     languageOptions: {
       ecmaVersion: "latest",
       sourceType: "module",
@@ -75,13 +62,6 @@ export default tseslint.config(
   {
     name: "typescript-setting",
     files: ["**/*.{ts,tsx}"],
-    plugins: {
-      tseslint,
-      _import,
-    },
-    languageOptions: {
-      parser: tsParser,
-    },
     settings: {
       "import/internal-regex": "^~/",
       "import/resolver": {
