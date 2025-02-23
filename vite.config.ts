@@ -1,5 +1,5 @@
-import { vitePlugin as remix } from "@remix-run/dev";
 import { defineConfig } from "vite";
+import { vitePlugin as remix } from "@remix-run/dev";
 import tsconfigPaths from "vite-tsconfig-paths";
 
 declare module "@remix-run/node" {
@@ -21,4 +21,13 @@ export default defineConfig({
     }),
     tsconfigPaths(),
   ],
+  test: {
+    globals: true,
+    coverage: {
+      enabled: true,
+      // 対象はappディレクトリ配下
+      include: ["app/**"],
+      reporter: ["html"],
+    },
+  },
 });
