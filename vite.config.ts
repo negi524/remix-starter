@@ -23,5 +23,10 @@ export default defineConfig({
   ],
   test: {
     globals: true,
+    coverage: {
+      // 対象はappディレクトリ配下
+      include: ["app/**"],
+      reporter: ["text", "json", "html"],
+    },
   },
 });
