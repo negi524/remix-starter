@@ -11,7 +11,7 @@
     "typecheck": "tsc",
     "format": "prettier app/ --write",
     "test": "vitest",
-    "coverage": "vitest run --coverage",
+    "test:coverage": "vitest run --coverage",
     "test:ui": "vitest --ui"
   },
   "dependencies": {
