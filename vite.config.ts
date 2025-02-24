@@ -1,3 +1,4 @@
+/// <reference types="vitest/config" />
 import { defineConfig } from "vite";
 import { vitePlugin as remix } from "@remix-run/dev";
 import tsconfigPaths from "vite-tsconfig-paths";
@@ -27,7 +28,7 @@ export default defineConfig({
       enabled: true,
       // 対象はappディレクトリ配下
       include: ["app/**"],
-      reporter: ["html"],
+      reporter: ["text", "html"],
     },
   },
 });
