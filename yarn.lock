@@ -1474,7 +1474,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@remix-run/react@npm:^2.15.3":
+"@remix-run/react@npm:2.15.3, @remix-run/react@npm:^2.15.3":
   version: 2.15.3
   resolution: "@remix-run/react@npm:2.15.3"
   dependencies:
@@ -1536,6 +1536,24 @@ __metadata:
     typescript:
       optional: true
   checksum: 10c0/8d9f807b7e3af26a4c1bb0be5b7a60a707947ed52f71e1c2c97c07bfefd3c49f9482a22a2dfe88a0b967a45f99597cbb27d92ab57f869d31fea4f84f0e47466a
+  languageName: node
+  linkType: hard
+
+"@remix-run/testing@npm:^2.15.3":
+  version: 2.15.3
+  resolution: "@remix-run/testing@npm:2.15.3"
+  dependencies:
+    "@remix-run/node": "npm:2.15.3"
+    "@remix-run/react": "npm:2.15.3"
+    "@remix-run/router": "npm:1.22.0"
+    react-router-dom: "npm:6.29.0"
+  peerDependencies:
+    react: ^18.0.0
+    typescript: ^5.1.0
+  peerDependenciesMeta:
+    typescript:
+      optional: true
+  checksum: 10c0/ee3c7021bc89500be0b88d6f54dea606432fbb3166b5ffa19558e49dcc906063957fbacfc1da53be5c19b4508960866ca09ea7b2742cabe0f983caa8b0cf4b03
   languageName: node
   linkType: hard
 
@@ -7756,6 +7774,7 @@ __metadata:
     "@remix-run/node": "npm:^2.15.3"
     "@remix-run/react": "npm:^2.15.3"
     "@remix-run/serve": "npm:^2.15.3"
+    "@remix-run/testing": "npm:^2.15.3"
     "@types/react": "npm:^19.0.10"
     "@types/react-dom": "npm:^19.0.4"
     "@typescript-eslint/eslint-plugin": "npm:^8.24.1"
