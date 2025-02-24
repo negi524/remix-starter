@@ -2745,7 +2745,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"autoprefixer@npm:^10.4.19":
+"autoprefixer@npm:^10.4.20":
   version: 10.4.20
   resolution: "autoprefixer@npm:10.4.20"
   dependencies:
@@ -8072,7 +8072,7 @@ __metadata:
     "@typescript-eslint/parser": "npm:^8.24.1"
     "@vitest/coverage-v8": "npm:3.0.6"
     "@vitest/ui": "npm:^3.0.6"
-    autoprefixer: "npm:^10.4.19"
+    autoprefixer: "npm:^10.4.20"
     eslint: "npm:^9.21.0"
     eslint-import-resolver-typescript: "npm:^3.8.3"
     eslint-plugin-import: "npm:^2.31.0"
