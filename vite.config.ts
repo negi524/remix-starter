@@ -27,7 +27,7 @@ export default defineConfig({
       enabled: true,
       // 対象はappディレクトリ配下
       include: ["app/**"],
-      reporter: ["html"],
+      reporter: ["text", "html"],
     },
   },
 });
