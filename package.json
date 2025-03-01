@@ -53,7 +53,7 @@
     "vitest": "^3.0.6"
   },
   "engines": {
-    "node": ">=20.0.0",
+    "node": ">=23.0.0",
     "npm": "use yarn instead",
     "yarn": "4.6.0"
   },
