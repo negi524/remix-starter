@@ -4,7 +4,7 @@
 
 ## Status
 
-[![Pull Request](https://github.com/negi524/remix-starter/actions/workflows/test.yml/badge.svg?branch=main)](https://github.com/negi524/remix-starter/actions/workflows/test.yml)
+[![Test](https://github.com/negi524/remix-starter/actions/workflows/test.yml/badge.svg)](https://github.com/negi524/remix-starter/actions/workflows/test.yml)
 
 ## Development
 
