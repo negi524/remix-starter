@@ -26,3 +26,10 @@ jobs:
       # ビルドチェック
       - name: Build check
         run: yarn build
+      - name: Comment on the pull request
+        uses: marocchino/sticky-pull-request-comment@v2
+        with:
+          header: Coverage summary
+          message: |
+            ## テストヘッダー
+            テストテスト
