@@ -2,6 +2,10 @@
 
 - 📖 [Remix docs](https://remix.run/docs)
 
+## Status
+
+[![Pull Request](https://github.com/negi524/remix-starter/actions/workflows/pull_request.yml/badge.svg?branch=main)](https://github.com/negi524/remix-starter/actions/workflows/pull_request.yml)
+
 ## Development
 
 Run the dev server:
