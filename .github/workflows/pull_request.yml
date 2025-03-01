@@ -29,5 +29,6 @@ jobs:
       # ビルドチェック
       - name: Build check
         run: yarn build
+      # カバレッジレポート出力
       - name: Comment on the pull request
         uses: davelosert/vitest-coverage-report-action@v2
