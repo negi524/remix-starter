@@ -1,3 +1,6 @@
+> [!NOTE]
+> [react-router-starter](https://github.com/negi524/react-router-starter)に移動しました。
+
 # Welcome to Remix!
 
 - 📖 [Remix docs](https://remix.run/docs)
